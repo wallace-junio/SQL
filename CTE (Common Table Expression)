@@ -1,0 +1,18 @@
+/* Advanced SQL Tutorial | CTE (Common Table Expression)
+Support websites:
+SQL statements: https://www.w3schools.com/sql/sql_intro.asp
+Use case scenarios using SQL:https://www.hackerrank.com/products/main/
+
+WITH CTE_EMPLOYEE AS (
+
+SELECT FirstName, LastName, Gender, Salary
+,COUNT(GENDER) OVER (PARTITION BY Gender) AS TotalGender 
+,AVG(Salary) OVER (PARTITION BY Salary) AS AVGSalary 
+FROM EMPLOYEE AS EMP
+JOIN EMPLOYEESALARY AS SAL
+	ON EMP.EmployeeID = SAL.EmployeeID
+WHERE Salary > 40000
+
+)
+SELECT *
+FROM CTE_EMPLOYEE
